@@ -1,4 +1,4 @@
-package br.com.brunovaz.gestao_vagas.modules.company.UseCases;
+package br.com.brunovaz.gestao_vagas.modules.company.useCases;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ public class CreateCompanyUseCase {
     private CompanyRepository companyRepository;
 
     public CompanyEntity execute(CompanyEntity companyEntity){
-        
+
         this.companyRepository.findByUsernameOrEmail(companyEntity.getUsername(), companyEntity.getEmail())
             .ifPresent((user) -> {
                 throw new UserFoundException();
