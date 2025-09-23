@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -43,6 +44,7 @@ public class CandidateControllers {
     }
 
     @GetMapping("/")
+    @PreAuthorize("hasRole('CANDIDATE')")
 
     public ResponseEntity<Object> get(HttpServletRequest request){
 
