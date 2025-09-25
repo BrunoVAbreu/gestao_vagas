@@ -33,6 +33,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping ("/candidate")
+    @Tag(name="Candidato", description="Informações do candidato")
+
 public class CandidateControllers {
 
     @Autowired 
@@ -45,6 +47,13 @@ public class CandidateControllers {
     private ListAllJobsByFilterUseCase listAllJobsByFilterUseCase;
 
     @PostMapping("/")
+    @Operation(summary = "Cadastro de candidato", description = "Essa função é responsável por cadastrar um candidato")
+    @ApiResponses({
+        @ApiResponse(responseCode="200", content = {
+            @Content( array = @ArraySchema(schema = @Schema(implementation=JobEntity.class)))
+        }),
+        @ApiResponse(responseCode="400", description = "Usuário já existe")
+    })
     public ResponseEntity<Object> create( @Valid @RequestBody CandidateEntity candidateEntity){
         try {
             var result= this.createCandidateUseCase.execute(candidateEntity);
@@ -56,7 +65,6 @@ public class CandidateControllers {
 
     @GetMapping("/")
     @PreAuthorize("hasRole('CANDIDATE')")
-    @Tag(name="Candidato", description="Informações do candidato")
     @Operation(summary = "Perfil do candidato", description = "Essa função é responsável por buscar as informações do candidato")
     @SecurityRequirement(name = "jwt_auth")
     @ApiResponses({
@@ -78,9 +86,8 @@ public class CandidateControllers {
 
     @GetMapping("/job")
     @PreAuthorize("hasRole('CANDIDATE')")
-        @Tag(name="Candidato", description="Informações do candidato")
-        @Operation(summary = "Listagem de vagas disponíveis para o candidato", description = "Essa função é responsável por listar todas as vagas disponíveis, baseada no filtro")
-        @SecurityRequirement(name = "jwt_auth")
+    @Operation(summary = "Listagem de vagas disponíveis para o candidato", description = "Essa função é responsável por listar todas as vagas disponíveis, baseada no filtro")
+    @SecurityRequirement(name = "jwt_auth")
     @ApiResponses({
         @ApiResponse(responseCode="200", content = {
             @Content( array = @ArraySchema(schema = @Schema(implementation=JobEntity.class)))
