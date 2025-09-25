@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import br.com.brunovaz.gestao_vagas.modules.candidate.CandidateEntity;
+import br.com.brunovaz.gestao_vagas.modules.candidate.dto.ProfileCandidateResponseDTO;
 import br.com.brunovaz.gestao_vagas.modules.candidate.useCases.CreateCandidateUseCase;
 import br.com.brunovaz.gestao_vagas.modules.candidate.useCases.ListAllJobsByFilterUseCase;
 import br.com.brunovaz.gestao_vagas.modules.candidate.useCases.ProfileCandidateUseCase;
@@ -55,7 +56,15 @@ public class CandidateControllers {
 
     @GetMapping("/")
     @PreAuthorize("hasRole('CANDIDATE')")
-
+    @Tag(name="Candidato", description="Informações do candidato")
+    @Operation(summary = "Perfil do candidato", description = "Essa função é responsável por buscar as informações do candidato")
+    @SecurityRequirement(name = "jwt_auth")
+    @ApiResponses({
+        @ApiResponse(responseCode="200", content = {
+            @Content( schema = @Schema(implementation = ProfileCandidateResponseDTO.class))
+        }),
+        @ApiResponse(responseCode="400", description = "User not found")
+    })
     public ResponseEntity<Object> get(HttpServletRequest request){
 
         var idCandidate = request.getAttribute("candidate_id");
@@ -69,9 +78,9 @@ public class CandidateControllers {
 
     @GetMapping("/job")
     @PreAuthorize("hasRole('CANDIDATE')")
-    @Tag(name="Candidato", description="Informações do candidato")
-    @Operation(summary = "Listagem de vagas disponíveis para o candidato", description = "Essa função é responsável por listar todas as vagas disponíveis, baseada no filtro")
-    @SecurityRequirement(name = "jwt_auth")
+        @Tag(name="Candidato", description="Informações do candidato")
+        @Operation(summary = "Listagem de vagas disponíveis para o candidato", description = "Essa função é responsável por listar todas as vagas disponíveis, baseada no filtro")
+        @SecurityRequirement(name = "jwt_auth")
     @ApiResponses({
         @ApiResponse(responseCode="200", content = {
             @Content( array = @ArraySchema(schema = @Schema(implementation=JobEntity.class)))
