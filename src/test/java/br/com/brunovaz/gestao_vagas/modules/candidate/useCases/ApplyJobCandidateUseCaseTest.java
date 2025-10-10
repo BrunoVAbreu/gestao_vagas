@@ -23,7 +23,6 @@ import br.com.brunovaz.gestao_vagas.modules.candidate.entity.ApplyJobEntity;
 import br.com.brunovaz.gestao_vagas.modules.candidate.repository.ApplyJobRepository;
 import br.com.brunovaz.gestao_vagas.modules.company.entities.JobEntity;
 import br.com.brunovaz.gestao_vagas.modules.company.repositories.JobRepository;
-import lombok.var;
 
 
 @ExtendWith(MockitoExtension.class)
