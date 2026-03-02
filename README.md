@@ -27,9 +27,7 @@
 - [📍 Endpoints da API](#routes)
   - [Empresa](#company-routes)
   - [Candidato](#candidate-routes)
-- [📊 Monitoramento](#monitoring)
-- [🤝 Colaboradores](#colab)
-- [📫 Contribua](#contribute)
+
 
 </details>
 
@@ -179,13 +177,6 @@ http://localhost:8080/swagger-ui/index.html
 ```json
 "3fa85f64-5717-4562-b3fc-2c963f66afa6"
 ```
-
-> 💡 Para os endpoints com autenticação, inclua o header: `Authorization: Bearer {token}`
-
-<h2 id="monitoring">📊 Monitoramento</h2>
-
-A aplicação expõe métricas via **Spring Actuator + Micrometer** coletadas pelo Prometheus e visualizadas no Grafana.
-
 | Ferramenta | URL | Credenciais padrão |
 |------------|-----|--------------------|
 | Prometheus | `http://localhost:9090` | — |
