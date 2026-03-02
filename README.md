@@ -177,7 +177,3 @@ http://localhost:8080/swagger-ui/index.html
 ```json
 "3fa85f64-5717-4562-b3fc-2c963f66afa6"
 ```
-| Ferramenta | URL | Credenciais padrão |
-|------------|-----|--------------------|
-| Prometheus | `http://localhost:9090` | — |
-| Grafana | `http://localhost:3000` | admin / admin |
