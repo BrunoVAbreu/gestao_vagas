@@ -49,7 +49,7 @@ A autenticação é feita via **JWT** com tokens distintos para empresa e candid
 | Repositório | Descrição |
 |-------------|-----------|
 | **Backend** (este repo) | API REST com Spring Boot |
-| [**Frontend**](https://github.com/seu-usuario/front-gestao-vagas) | Interface web com Spring Boot + Thymeleaf |
+| [**Frontend**](https://github.com/BrunoVAbreu/front_gestao_vagas) | Interface web com Spring Boot + Thymeleaf |
 
 <h2 id="started">🚀 Como executar</h2>
 
@@ -63,7 +63,7 @@ A autenticação é feita via **JWT** com tokens distintos para empresa e candid
 <h3 id="cloning">Clonando</h3>
 
 ```bash
-git clone https://github.com/seu-usuario/gestao-vagas.git
+git clone https://github.com/BrunoVAbreu/gestao_vagas.git
 cd gestao-vagas
 ```
 
@@ -82,8 +82,6 @@ spring.jpa.hibernate.ddl-auto=update
 security.token.secret=JAVAGAS_@123#
 security.token.secret.candidate=JAVAGAS_@123#CANDIDATE
 ```
-
-> ⚠️ **Atenção:** Altere os valores dos secrets JWT antes de usar em produção. O `token.sonar` presente no arquivo original pode ser removido — é um token de integração com SonarQube e não deve ser versionado.
 
 <h3 id="starting">▶️ Iniciando</h3>
 
